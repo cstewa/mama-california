@@ -1,0 +1,11 @@
+<h2>New contact form submission</h2>
+
+<table style="border-collapse:collapse;width:100%;max-width:600px;">
+  <tr><td style="padding:8px;font-weight:bold;width:140px;">Name</td><td style="padding:8px;"><%= @submission.name %></td></tr>
+  <tr style="background:#f9f9f9;"><td style="padding:8px;font-weight:bold;">Email</td><td style="padding:8px;"><a href="mailto:<%= @submission.email %>"><%= @submission.email %></a></td></tr>
+  <tr><td style="padding:8px;font-weight:bold;">City</td><td style="padding:8px;"><%= @submission.city.presence || "—" %></td></tr>
+  <tr style="background:#f9f9f9;"><td style="padding:8px;font-weight:bold;">Interest</td><td style="padding:8px;"><%= @submission.interest_type.presence || "—" %></td></tr>
+  <% if @submission.message.present? %>
+  <tr><td style="padding:8px;font-weight:bold;vertical-align:top;">Message</td><td style="padding:8px;"><%= @submission.message %></td></tr>
+  <% end %>
+</table>

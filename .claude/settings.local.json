@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://wearemama.org/)",
+      "Bash(curl -s \"https://wearemama.org/wp-content/uploads/2025/02/Primary_alt_red_RGB-1-e1765846401172-1024x334.png\" -o /Users/christinastewart/Development/mama-california/frontend/public/mama-logo.png)"
+    ]
+  }
+}
