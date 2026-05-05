@@ -1,10 +1,14 @@
 # Ruby / Rails
 backend/.bundle
+backend/vendor/
 backend/log/
 backend/tmp/
 backend/storage/
 backend/*.env
 backend/.env*
+
+# Claude
+.claude/
 
 # Node / React
 frontend/node_modules/
