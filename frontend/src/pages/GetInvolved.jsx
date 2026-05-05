@@ -55,8 +55,17 @@ export default function GetInvolved() {
               { city: "Davis", signUp: "https://forms.gle/cAfJQ4ibLgx1gPg3A" },
             ].map(c => (
               <div key={c.city} className="chapter-pill">
-                <strong>{c.city}</strong>
-                <a href={c.signUp} target="_blank" rel="noopener noreferrer" className="chapter-pill__signup">Join</a>
+                <strong className="chapter-pill__name">{c.city}</strong>
+                <a
+                  href={c.signUp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="chapter-pill__signup"
+                  aria-label={`Sign up for the ${c.city} chapter`}
+                >
+                  Sign up
+                  <span className="chapter-pill__signup-arrow" aria-hidden>→</span>
+                </a>
               </div>
             ))}
           </div>
@@ -98,29 +107,6 @@ export default function GetInvolved() {
               Fill out the form and we'll connect you with the right people and opportunities in your area.
               Whether you have an hour a month or a full weekend, there's a role for you.
             </p>
-            <div className="join-ctas">
-              <p className="join-ctas__label">Get started right away</p>
-              <div className="join-ctas__buttons">
-                <a
-                  href="https://mobilize.us"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--primary join-cta"
-                >
-                  RSVP to events on Mobilize
-                  <span className="join-cta__arrow" aria-hidden>→</span>
-                </a>
-                <a
-                  href="https://wearemama.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn--outline join-cta"
-                >
-                  Join MAMA National
-                  <span className="join-cta__arrow" aria-hidden>→</span>
-                </a>
-              </div>
-            </div>
           </div>
 
           <form className="join-form" onSubmit={handleSubmit}>

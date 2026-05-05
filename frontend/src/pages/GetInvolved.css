@@ -4,21 +4,51 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  gap: 16px;
+  padding: 14px 16px 14px 20px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--white);
 }
-.chapter-pill strong { font-size: 15px; }
+.chapter-pill__name {
+  font-size: 15px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.35;
+  min-width: 0;
+}
 .chapter-pill__signup {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent);
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: var(--red);
+  border: 2px solid var(--red);
+  border-radius: 4px;
   text-decoration: none;
   white-space: nowrap;
-  margin-left: 16px;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.chapter-pill__signup:hover { text-decoration: underline; }
+.chapter-pill__signup:hover {
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.25);
+}
+.chapter-pill__signup:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+.chapter-pill__signup-arrow {
+  font-weight: 600;
+  line-height: 1;
+}
 
 .involve-card {
   background: var(--white);
@@ -64,36 +94,6 @@
 .join-section__text h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); margin-bottom: 16px; }
 .join-section__text p { color: #555; line-height: 1.8; margin-bottom: 24px; }
 
-.join-ctas {
-  margin-top: 8px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-.join-ctas__label {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  margin-bottom: 14px;
-}
-.join-ctas__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.join-cta {
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-}
-.join-cta__arrow {
-  margin-left: 6px;
-  font-weight: 600;
-}
-
 .get-involved .page-hero {
   position: relative;
   overflow: hidden;
@@ -123,4 +123,15 @@
 @media (max-width: 768px) {
   .legislator-cta, .join-section { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .chapter-pill {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .chapter-pill__signup {
+    width: 100%;
+    justify-content: center;
+  }
 }
