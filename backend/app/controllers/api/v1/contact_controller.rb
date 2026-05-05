@@ -4,7 +4,7 @@ module API
       def create
         submission = ContactSubmission.new(contact_params)
         if submission.save
-          ContactMailer.new_submission(submission).deliver_later
+          ContactMailer.new_submission(submission).deliver_now
           render json: { message: "Thank you! We'll be in touch soon." }, status: :created
         else
           render json: { errors: submission.errors.full_messages }, status: :unprocessable_entity

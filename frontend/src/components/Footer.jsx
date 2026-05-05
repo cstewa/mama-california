@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer__grid">
           <div className="footer__brand">
             <div className="footer__logo">
-              <span className="footer__logo-text">MAMA</span>
+              <img src="/mama-logo.png" alt="MAMA" className="footer__logo-img" />
               <span className="footer__logo-sub">California</span>
             </div>
             <p className="footer__tagline">
@@ -22,18 +22,18 @@ export default function Footer() {
           <div className="footer__col">
             <h4>Navigate</h4>
             <Link to="/about">About</Link>
-            <Link to="/get-involved">Get Involved</Link>
             <Link to="/resources">Resources</Link>
             <Link to="/events">Events</Link>
             <Link to="/news">News</Link>
+            <Link to="/get-involved">Get Involved</Link>
           </div>
 
           <div className="footer__col">
             <h4>Take Action</h4>
-            <a href="https://wearemama.org" target="_blank" rel="noopener noreferrer">MAMA National</a>
             <Link to="/get-involved#contact-legislators">Contact Legislators</Link>
-            <Link to="/events">Upcoming Events</Link>
-            <Link to="/get-involved#start-chapter">Start a Chapter</Link>
+            <Link to="/get-involved#find-chapter">Find a Chapter</Link>
+            <a href="https://wearemama.org/start-a-mama-chapter/" target="_blank" rel="noopener noreferrer">Start a Chapter</a>
+            <a href="https://wearemama.org" target="_blank" rel="noopener noreferrer">MAMA National</a>
           </div>
 
           <div className="footer__col">
@@ -45,8 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© {new Date().getFullYear()} MAMA California · mama-california.org</p>
-          <Link to="/privacy">Privacy Policy</Link>
+          <p>© {new Date().getFullYear()} MAMA California · Part of Mothers Against Media Addiction, a registered 501(c)3 nonprofit.</p>
         </div>
       </div>
     </footer>

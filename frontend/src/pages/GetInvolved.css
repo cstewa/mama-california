@@ -62,27 +62,46 @@
 .involve-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
 .involve-card p { font-size: 14px; color: #666; line-height: 1.7; }
 
-.legislator-cta {
+.action-cards {
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
 }
-.legislator-cta .badge { margin-bottom: 12px; }
-.legislator-cta h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); margin-bottom: 14px; }
-.legislator-cta p { color: #555; line-height: 1.8; }
-
-.legislator-stats { display: flex; flex-direction: column; gap: 12px; }
-.leg-stat {
+.action-card {
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 14px 18px;
+  border-radius: 10px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
+  gap: 14px;
 }
-.leg-stat span { font-size: 15px; font-weight: 600; color: var(--red); }
-.leg-stat small { font-size: 12px; color: var(--mid-gray); margin-top: 2px; }
+.action-card__bill {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+  background: var(--red-light);
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: fit-content;
+}
+.action-card h3 { font-size: 1.1rem; margin: 0; }
+.action-card p { font-size: 15px; color: #555; line-height: 1.8; margin: 0; flex: 1; }
+.action-card .btn { align-self: flex-start; margin-top: 8px; }
+.action-card--full { grid-column: 1 / -1; }
+.action-steps {
+  margin: 4px 0 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.action-steps li { font-size: 15px; color: #555; line-height: 1.7; }
+.action-steps a { color: var(--red); text-decoration: underline; }
 
 .join-section {
   display: grid;
@@ -121,7 +140,7 @@
 .form-error { background: var(--red-light); border: 1px solid var(--red); color: var(--red-dark); border-radius: 6px; padding: 14px 16px; margin-bottom: 20px; font-size: 15px; }
 
 @media (max-width: 768px) {
-  .legislator-cta, .join-section { grid-template-columns: 1fr; }
+  .action-cards, .join-section { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
 }
 

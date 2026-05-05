@@ -75,24 +75,39 @@ export default function GetInvolved() {
         </div>
       </section>
 
-      {/* EveryAction callout */}
+      {/* Legislation CTAs */}
       <section className="section" id="contact-legislators">
-        <div className="container legislator-cta">
-          <div>
-            <span className="badge">Take Action Now</span>
-            <h2>Contact Your California Legislators</h2>
-            <p>
-              Protecting kids from addictive technology requires legislation. Use EveryAction
-              to send a message directly to your state representative in minutes. Make your voice heard.
-            </p>
-            <a href="https://wearemama.org/get-involved" target="_blank" rel="noopener noreferrer" className="btn btn--primary" style={{marginTop: '20px'}}>
-              Contact Legislators via EveryAction →
-            </a>
-          </div>
-          <div className="legislator-stats">
-            <div className="leg-stat"><span>AB 272</span><small>Phone-free schools bill</small></div>
-            <div className="leg-stat"><span>SB 976</span><small>Social media age verification</small></div>
-            <div className="leg-stat"><span>AB 1814</span><small>Kids social media protection</small></div>
+        <div className="container">
+          <span className="badge">Take Action Now</span>
+          <h2 className="section-title" style={{marginTop: '12px'}}>Support Key California Legislation</h2>
+          <div className="action-cards">
+            <div className="action-card">
+              <div className="action-card__bill">AB 1709</div>
+              <h3>Raise the Minimum Social Media Age to 16</h3>
+              <p>California's AB 1709 would prohibit social media platforms from allowing children under 16 to create accounts—giving kids more time to grow up before entering algorithmically-driven feeds.</p>
+              <a href="https://www.socialmediadelay.com/" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+                Sign the Petition →
+              </a>
+            </div>
+            <div className="action-card">
+              <div className="action-card__bill">AB 1644</div>
+              <h3>Keep Phones Out of Schools</h3>
+              <p>AB 1644 would strengthen phone-free school policies across California. Sign with our partner organization Distraction Free Schools CA to show your support.</p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfa9GaJPoc9qMCsXOYrNJmt0LKEJcT9BxbYtKS4T63y8HKl3w/viewform" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+                Sign the Letter →
+              </a>
+            </div>
+            <div className="action-card action-card--full">
+              <div className="action-card__bill">Direct Legislative Action</div>
+              <h3>Submit Your Support Directly to the California Legislature</h3>
+              <p>Take two minutes to go on record in support of these bills through the official CA Legislative portal.</p>
+              <ol className="action-steps">
+                <li>Go to the <a href="https://calegislation.lc.ca.gov/Advocates/" target="_blank" rel="noopener noreferrer">CA Legislature Advocates Portal</a> and create an account if you haven't already.</li>
+                <li>Search for the bill number (AB 1709 or AB 1644).</li>
+                <li>Indicate you are submitting on behalf of an individual or organization — search for <strong>Mothers Against Media Addiction</strong>.</li>
+                <li>Select that you <strong>SUPPORT</strong> the bill, add your statement, and submit.</li>
+              </ol>
+            </div>
           </div>
         </div>
       </section>

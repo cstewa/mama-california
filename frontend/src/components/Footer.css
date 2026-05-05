@@ -14,16 +14,14 @@
 
 .footer__logo {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   margin-bottom: 16px;
 }
-.footer__logo-text {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--red);
-  letter-spacing: 0.05em;
+.footer__logo-img {
+  height: 24px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 .footer__logo-sub {
   font-size: 12px;

@@ -4,7 +4,6 @@ import './Navbar.css'
 
 const LINKS = [
   { to: '/about',       label: 'About' },
-  { to: '/get-involved', label: 'Get Involved' },
   { to: '/resources',   label: 'Resources' },
   { to: '/events',      label: 'Events' },
   { to: '/news',        label: 'News' },
@@ -36,8 +35,8 @@ export default function Navbar() {
               {l.label}
             </NavLink>
           ))}
-          <Link to="/get-involved#join" className="btn btn--primary navbar__cta" onClick={() => setOpen(false)}>
-            Join Us
+          <Link to="/get-involved" className="btn btn--primary navbar__cta" onClick={() => setOpen(false)}>
+            Get Involved
           </Link>
         </div>
       </div>

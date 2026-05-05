@@ -39,11 +39,6 @@ function EventCard({ event }) {
               RSVP
             </a>
           )}
-          {event.mobilize_url && (
-            <a href={event.mobilize_url} target="_blank" rel="noopener noreferrer" className="btn btn--outline">
-              View on Mobilize
-            </a>
-          )}
         </div>
       </div>
     </div>
@@ -80,7 +75,6 @@ export default function Events() {
         <div className="container">
           <div className="events-header">
             <p className="events-note">
-              Events are listed on <a href="https://mobilize.us" target="_blank" rel="noopener noreferrer">Mobilize</a> for easy RSVP.
               Want to host an event? <a href="/get-involved">Get in touch</a>.
             </p>
           </div>
