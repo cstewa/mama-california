@@ -1,4 +1,4 @@
-module Api
+module API
   module V1
     class AuthController < ApplicationController
       def login
