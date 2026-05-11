@@ -1,0 +1,2 @@
+[phases.setup]
+nixPkgs = ["...", "ruby_3_3", "nodejs_20", "imagemagick"]

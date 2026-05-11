@@ -20,6 +20,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   config.force_ssl = ENV["FORCE_SSL"].present?
+  config.public_file_server.enabled = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
