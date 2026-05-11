@@ -1,9 +1,0 @@
-[build]
-builder = "nixpacks"
-buildCommand = "cd /app/frontend && npm ci && npm run build && cp -r dist/* /app/backend/public/ && cd /app/backend && bundle install"
-
-[deploy]
-startCommand = "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
-healthcheckPath = "/up"
-healthcheckTimeout = 100
-restartPolicyType = "on_failure"
