@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  SECRET = Rails.application.credentials.secret_key_base || ENV.fetch("SECRET_KEY_BASE", "dev_secret_change_in_production")
+  SECRET = ENV.fetch("SECRET_KEY_BASE", "dev_secret_change_in_production")
 
   def authenticate_admin!
     member = current_member
