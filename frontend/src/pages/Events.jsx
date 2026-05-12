@@ -94,21 +94,6 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Host */}
-      <section className="section section--gray">
-        <div className="container host-section">
-          <div>
-            <h2>Host an Event in Your Community</h2>
-            <p>
-              MAMA California supports local chapter leaders in organizing farmers market tables, film screenings,
-              speaker events, and more. We provide materials, training, and national support.
-            </p>
-          </div>
-          <div>
-            <a href="/get-involved" className="btn btn--primary">Get Started</a>
-          </div>
-        </div>
-      </section>
     </main>
   )
 }
