@@ -1,9 +1,9 @@
 [build]
-builder = "nixpacks"
-buildCommand = "cd frontend && npm ci && npm run build && cp -r dist/* ../backend/public/ && cd ../backend && bundle install"
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "cd backend && bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
+startCommand = "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
 healthcheckPath = "/up"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
