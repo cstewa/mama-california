@@ -75,7 +75,7 @@ export default function Events() {
         <div className="container">
           <div className="events-header">
             <p className="events-note">
-              Want to host an event? <a href="/get-involved">Get in touch</a>.
+              Want to host an event? <a href="/get-involved#join">Get in touch</a>.
             </p>
           </div>
 
