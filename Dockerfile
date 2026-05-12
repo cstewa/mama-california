@@ -32,4 +32,4 @@ ENV RAILS_SERVE_STATIC_FILES=true
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"]
+CMD ["sh", "-c", "bundle exec rails db:migrate; bundle exec puma -C config/puma.rb"]
