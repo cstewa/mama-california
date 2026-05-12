@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 COPY backend/Gemfile backend/Gemfile.lock ./
-RUN bundle install --without development test
+ENV BUNDLE_WITHOUT="development:test"
+RUN bundle install
 COPY backend/ ./
 COPY --from=frontend-build /frontend/dist ./public/
 
