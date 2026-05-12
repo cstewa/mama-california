@@ -19,6 +19,7 @@ const MOCK_RESOURCES = [
   { id: 4, title: "Parent-Child Phone Contract Template", resource_type: "guide", topic: "parenting", description: "A customizable contract you can use with your child when introducing a smartphone." },
   { id: 5, title: "AI Emotional Reliance in Gen Z", resource_type: "study", topic: "ai_safety", url: "https://arxiv.org/abs/2512.15117", description: "Research on conversational AI models fostering emotional dependence, with 1 in 3 Gen Z users reporting intimate relationships with AI." },
   { id: 6, title: "High Stakes as Country's First Social Media Addiction Trial Nears", resource_type: "article", topic: "litigation", url: "https://ctse.aei.org/high-stakes-as-countrys-first-social-media-addiction-trial-nears-and-snap-settles/", source: "AEI", description: "Coverage of the landmark social media addiction trial and Snap's settlement." },
+  { id: 7, title: "School Board Speech Templates", resource_type: "guide", topic: "legislation", source: "Screen Free Childhood US", url: "https://docs.google.com/document/d/1Pdq896LEqNW27XaN2taJwJO8PzYcjYwPbnF16WFaV3w/edit", description: "Ready-to-use speech templates for parents who want to speak at school board meetings in support of phone-free school policies. Courtesy of Screen Free Childhood US.", featured: true },
 ]
 
 export default function Resources() {
