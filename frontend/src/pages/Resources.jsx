@@ -13,12 +13,6 @@ const TOPIC_LABELS = {
 }
 
 const MOCK_RESOURCES = [
-  { id: 1, title: "Demystifying Social Media Addiction Litigation", resource_type: "article", topic: "litigation", source: "AEI", url: "https://www.aei.org/technology-and-innovation/demystifying-social-media-addiction-litigation/", description: "A comprehensive overview of the legal landscape around social media addiction claims.", featured: true },
-  { id: 2, title: "The Anxious Generation", resource_type: "book", topic: "mental_health", author: "Jonathan Haidt", description: "The definitive book on how smartphones and social media have rewired childhood and triggered a mental health crisis.", featured: true },
-  { id: 3, title: "Why Wait Until 13 to Give Your Child a Phone", resource_type: "guide", topic: "parenting", description: "Evidence-based guidance for parents on the right age to introduce smartphones.", featured: true },
-  { id: 4, title: "Parent-Child Phone Contract Template", resource_type: "guide", topic: "parenting", description: "A customizable contract you can use with your child when introducing a smartphone." },
-  { id: 5, title: "AI Emotional Reliance in Gen Z", resource_type: "study", topic: "ai_safety", url: "https://arxiv.org/abs/2512.15117", description: "Research on conversational AI models fostering emotional dependence, with 1 in 3 Gen Z users reporting intimate relationships with AI." },
-  { id: 6, title: "High Stakes as Country's First Social Media Addiction Trial Nears", resource_type: "article", topic: "litigation", url: "https://ctse.aei.org/high-stakes-as-countrys-first-social-media-addiction-trial-nears-and-snap-settles/", source: "AEI", description: "Coverage of the landmark social media addiction trial and Snap's settlement." },
   { id: 7, title: "School Board Speech Templates", resource_type: "guide", topic: "legislation", source: "Screen Free Childhood US", url: "https://docs.google.com/document/d/1Pdq896LEqNW27XaN2taJwJO8PzYcjYwPbnF16WFaV3w/edit", description: "Ready-to-use speech templates for parents who want to speak at school board meetings in support of phone-free school policies. Courtesy of Screen Free Childhood US.", featured: true },
 ]
 
@@ -26,19 +20,26 @@ export default function Resources() {
   const [resources, setResources] = useState([])
   const [loading, setLoading] = useState(true)
   const [topic, setTopic] = useState('')
-  const [type, setType] = useState('')
 
   useEffect(() => {
-    getResources({ topic: topic || undefined, type: type || undefined })
-      .then(res => setResources(res.data))
+    getResources({ topic: topic || undefined })
+      .then(res => {
+        const data = res.data
+        if (data && data.length > 0) {
+          setResources(data)
+        } else {
+          let filtered = MOCK_RESOURCES
+          if (topic) filtered = filtered.filter(r => r.topic === topic)
+          setResources(filtered)
+        }
+      })
       .catch(() => {
         let filtered = MOCK_RESOURCES
         if (topic) filtered = filtered.filter(r => r.topic === topic)
-        if (type) filtered = filtered.filter(r => r.resource_type === type)
         setResources(filtered)
       })
       .finally(() => setLoading(false))
-  }, [topic, type])
+  }, [topic])
 
   return (
     <main>
@@ -57,12 +58,6 @@ export default function Resources() {
               <option value="">All Topics</option>
               {Object.entries(TOPIC_LABELS).map(([v, l]) => (
                 <option key={v} value={v}>{l}</option>
-              ))}
-            </select>
-            <select value={type} onChange={e => setType(e.target.value)}>
-              <option value="">All Types</option>
-              {Object.keys(TYPE_ICONS).map(t => (
-                <option key={t} value={t}>{t.charAt(0).toUpperCase() + t.slice(1)}</option>
               ))}
             </select>
           </div>
@@ -103,14 +98,6 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* Contribute */}
-      <section className="section section--gray">
-        <div className="container resources-contribute">
-          <h2>Know a Resource We Should Add?</h2>
-          <p>We're always looking for high-quality studies, articles, and guides to share with California parents.</p>
-          <a href="/get-involved" className="btn btn--outline">Suggest a Resource</a>
-        </div>
-      </section>
     </main>
   )
 }
