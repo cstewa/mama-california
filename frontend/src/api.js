@@ -20,4 +20,14 @@ export const submitContact = (data)  => api.post('/contact', data)
 export const signup        = (data)  => api.post('/members/signup', data)
 export const login         = (data)  => api.post('/auth/login', data)
 
+// Admin
+export const adminGetEvents      = ()         => api.get('/admin/events')
+export const adminCreateEvent    = (data)     => api.post('/admin/events', data)
+export const adminUpdateEvent    = (id, data) => api.put(`/admin/events/${id}`, data)
+export const adminDeleteEvent    = (id)       => api.delete(`/admin/events/${id}`)
+export const adminGetResources   = ()         => api.get('/admin/resources')
+export const adminCreateResource = (data)     => api.post('/admin/resources', data)
+export const adminUpdateResource = (id, data) => api.put(`/admin/resources/${id}`, data)
+export const adminDeleteResource = (id)       => api.delete(`/admin/resources/${id}`)
+
 export default api
