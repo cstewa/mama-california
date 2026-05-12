@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { submitContact } from '../api'
 import './GetInvolved.css'
 
 
 export default function GetInvolved() {
+  const { hash } = useLocation()
   const [form, setForm] = useState({ name: '', email: '', city: '', interest_type: '', message: '' })
   const [status, setStatus] = useState(null)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.querySelector(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [hash])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
