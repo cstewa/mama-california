@@ -2,6 +2,48 @@ import { useState, useEffect } from 'react'
 import { getNews } from '../api'
 import './News.css'
 
+const NEWSLETTERS = [
+  {
+    name: 'Catch Us Up',
+    description: 'Written by a MAMA CA Chapter Lead — curated news on tech, kids, and policy.',
+    url: 'https://catchusup.substack.com/',
+    label: 'Substack',
+  },
+  {
+    name: 'Tech Oversight Dispatch',
+    description: 'Policy-focused coverage of technology regulation and accountability.',
+    url: 'https://dispatch.techoversight.org/',
+    label: 'Newsletter',
+  },
+  {
+    name: 'Tech Policy Press',
+    description: 'Independent journalism on the intersection of technology and public policy.',
+    url: 'https://www.techpolicy.press/',
+    label: 'Publication',
+  },
+]
+
+const PODCASTS = [
+  {
+    name: 'Hard Fork',
+    description: 'NYT reporters Kevin Roose and Casey Newton break down the biggest stories in tech.',
+    url: 'https://podcasts.apple.com/us/podcast/hard-fork/id1528594034',
+    label: 'Apple Podcasts',
+  },
+  {
+    name: 'Scrolling 2 Death',
+    description: 'Conversations about social media, youth mental health, and what we can do about it.',
+    url: 'https://www.scrolling2death.com/',
+    label: 'Podcast',
+  },
+  {
+    name: 'Your Undivided Attention',
+    description: 'The Center for Humane Technology explores how to reclaim our minds from technology.',
+    url: 'https://www.humanetech.com/podcast',
+    label: 'Podcast',
+  },
+]
+
 const CAT_LABELS = { press: 'Press', blog: 'Blog', litigation: 'Litigation', legislation: 'Legislation' }
 const CAT_COLORS = { litigation: '#7B2D8B', legislation: '#1A5E8A', press: '#2D6A2D', blog: '#8A5A1A' }
 
@@ -81,6 +123,45 @@ export default function News() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="section section--gray">
+        <div className="container">
+          <h2 className="section__title">Stay Informed</h2>
+          <p className="section__subtitle">The outlets and shows we follow to keep up with what's happening.</p>
+
+          <div className="stay-informed">
+            <div className="stay-informed__group">
+              <h3 className="stay-informed__heading">Newsletters &amp; Publications</h3>
+              <div className="source-list">
+                {NEWSLETTERS.map(s => (
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="source-card">
+                    <div className="source-card__top">
+                      <span className="source-card__name">{s.name}</span>
+                      <span className="source-card__label">{s.label}</span>
+                    </div>
+                    <p className="source-card__desc">{s.description}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="stay-informed__group">
+              <h3 className="stay-informed__heading">Podcasts</h3>
+              <div className="source-list">
+                {PODCASTS.map(s => (
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="source-card">
+                    <div className="source-card__top">
+                      <span className="source-card__name">{s.name}</span>
+                      <span className="source-card__label">{s.label}</span>
+                    </div>
+                    <p className="source-card__desc">{s.description}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
