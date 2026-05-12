@@ -13,6 +13,7 @@ const TOPIC_LABELS = {
 }
 
 const MOCK_RESOURCES = [
+  { id: 1, title: "MAMA Stat Sheet", resource_type: "stat", topic: "addiction", source: "MAMA California", url: "/mama-statsheet.pdf", description: "Key statistics on youth social media use, mental health impacts, and the case for protective legislation. Print and share.", featured: true },
   { id: 7, title: "School Board Speech Templates", resource_type: "guide", topic: "legislation", source: "Screen Free Childhood US", url: "https://docs.google.com/document/d/1Pdq896LEqNW27XaN2taJwJO8PzYcjYwPbnF16WFaV3w/edit", description: "Ready-to-use speech templates for parents who want to speak at school board meetings in support of phone-free school policies. Courtesy of Screen Free Childhood US.", featured: true },
 ]
 
