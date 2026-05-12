@@ -142,6 +142,7 @@ end
     description: "The definitive book on how smartphones and social media have rewired childhood and triggered a mental health crisis.",
     resource_type: "book",
     author: "Jonathan Haidt",
+    url: "https://www.anxiousgeneration.com/book",
     topic: "mental_health",
     featured: true,
     published: true
