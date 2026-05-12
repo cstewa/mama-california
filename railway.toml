@@ -4,6 +4,6 @@ dockerfilePath = "Dockerfile"
 
 [deploy]
 startCommand = "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
-healthcheckPath = "/up"
+healthcheckPath = "/healthz"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"

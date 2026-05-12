@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
+  get "healthz", to: proc { [200, { "Content-Type" => "text/plain" }, ["ok"]] }
 
   # Serve React app for all non-API routes
   get "*path", to: "frontend#index", constraints: ->(req) { !req.path.start_with?("/api/") && !req.path.start_with?("/rails/") }
