@@ -1,78 +1,7 @@
-.news-filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 36px;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  padding: 8px 18px;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  cursor: pointer;
-  color: var(--charcoal);
-  transition: all 0.15s;
-}
-.filter-btn:hover { border-color: var(--red); color: var(--red); }
-.filter-btn.active { background: var(--red); color: var(--white); border-color: var(--red); }
-
-.news-list { display: flex; flex-direction: column; }
-
-.news-item {
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border);
-}
-.news-item:first-child { border-top: 1px solid var(--border); }
-.news-item--featured { background: var(--warm-gray); padding: 28px 24px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; }
-.news-item--featured + .news-item--featured { margin-top: 0; }
-
-.news-item__meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-.news-item__cat {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 3px;
-}
-.news-item__date, .news-item__source {
-  font-size: 13px;
-  color: var(--mid-gray);
-}
-.news-item__source { font-weight: 500; }
-
-.news-item h2 {
-  font-size: 1.15rem;
-  margin-bottom: 10px;
-  line-height: 1.4;
-}
-.news-item h2 a { color: var(--charcoal); text-decoration: none; transition: color 0.15s; }
-.news-item h2 a:hover { color: var(--red); }
-.news-item p { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 12px; }
-.news-item__readmore {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--red);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.news-item__readmore:hover { color: var(--red-dark); }
-
-/* Stay Informed */
 .stay-informed {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  margin-top: 12px;
 }
 @media (max-width: 700px) {
   .stay-informed { grid-template-columns: 1fr; gap: 36px; }
