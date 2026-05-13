@@ -24,6 +24,5 @@ Rails.application.configure do
 
   # Use Resend HTTP API (Railway blocks outbound SMTP)
   config.action_mailer.delivery_method = :resend
-  ::Resend.api_key = ENV["RESEND_API_KEY"]&.strip if defined?(::Resend)
 end
 
