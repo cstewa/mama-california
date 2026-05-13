@@ -11,12 +11,6 @@ const TYPE_LABELS = {
   workshop: 'Workshop',
 }
 
-const MOCK_EVENTS = [
-  { id: 1, title: "Santa Monica Farmers Market Tabling", event_type: "tabling", starts_at: new Date(Date.now() + 14 * 86400000).toISOString(), location_name: "Santa Monica Farmers Market", city: "Santa Monica", description: "Join us at the Wednesday market! We'll be sharing information about screen addiction and how to get involved with MAMA California.", is_virtual: false },
-  { id: 2, title: "Speaker Series: Kids, Screens & Mental Health", event_type: "speaker", starts_at: new Date(Date.now() + 21 * 86400000).toISOString(), location_name: "Santa Monica Public Library", city: "Santa Monica", description: "An evening with leading experts on the mental health crisis facing our children. Learn what the research says and what you can do.", rsvp_url: "#", is_virtual: false },
-  { id: 3, title: "Can't Look Away Screening", event_type: "screening", starts_at: new Date(Date.now() + 35 * 86400000).toISOString(), location_name: "Laemmle Monica Film Center", city: "Santa Monica", description: "A powerful documentary followed by community discussion. Light refreshments will be served. Bring a friend!", is_virtual: false },
-]
-
 function EventModal({ event, onClose }) {
   if (!event) return null
   const start = new Date(event.starts_at)
@@ -59,8 +53,8 @@ export default function Events() {
 
   useEffect(() => {
     getEvents()
-      .then(res => setEvents(res.data && res.data.length ? res.data : MOCK_EVENTS))
-      .catch(() => setEvents(MOCK_EVENTS))
+      .then(res => setEvents(res.data || []))
+      .catch(() => setEvents([]))
       .finally(() => setLoading(false))
   }, [])
 

@@ -19,47 +19,6 @@ end
   { name: "MAMA San Diego", city: "San Diego", district: "78th Assembly", county: "San Diego" },
 ].each { |attrs| Chapter.find_or_create_by(name: attrs[:name]).update(attrs) }
 
-# Sample events
-[
-  {
-    title: "Santa Monica Farmers Market Tabling",
-    description: "Join us at the Wednesday Santa Monica Farmers Market! We'll be sharing information about screen addiction and how parents can get involved with MAMA California.",
-    event_type: "tabling",
-    starts_at: 2.weeks.from_now.change(hour: 9),
-    ends_at: 2.weeks.from_now.change(hour: 13),
-    location_name: "Santa Monica Farmers Market",
-    address: "Arizona Ave & 2nd St",
-    city: "Santa Monica",
-    state: "CA",
-    published: true
-  },
-  {
-    title: "Speaker Series: Kids, Screens & Mental Health",
-    description: "Join us for an evening with Dr. Jean Twenge and other leading experts on the mental health crisis facing our children. Learn what the research says and what you can do.",
-    event_type: "speaker",
-    starts_at: 3.weeks.from_now.change(hour: 18, min: 30),
-    ends_at: 3.weeks.from_now.change(hour: 20, min: 30),
-    location_name: "Santa Monica Public Library",
-    address: "601 Santa Monica Blvd",
-    city: "Santa Monica",
-    state: "CA",
-    rsvp_url: "https://mobilize.us",
-    published: true
-  },
-  {
-    title: "Can't Look Away Screening",
-    description: "A powerful documentary screening followed by community discussion. Bring a friend! Light refreshments will be served.",
-    event_type: "screening",
-    starts_at: 5.weeks.from_now.change(hour: 19),
-    ends_at: 5.weeks.from_now.change(hour: 21, min: 30),
-    location_name: "Laemmle Monica Film Center",
-    address: "1332 2nd St",
-    city: "Santa Monica",
-    state: "CA",
-    published: true
-  },
-].each { |attrs| Event.find_or_create_by(title: attrs[:title]).update(attrs) }
-
 # Sample news items
 [
   {
