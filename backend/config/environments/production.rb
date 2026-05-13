@@ -22,14 +22,18 @@ Rails.application.configure do
   config.force_ssl = ENV["FORCE_SSL"].present?
   config.public_file_server.enabled = true
 
+  smtp_port = ENV.fetch("SMTP_PORT", 587).to_s.strip.to_i
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              ENV["SMTP_HOST"]&.strip,
-    port:                 ENV.fetch("SMTP_PORT", 587).to_s.strip.to_i,
+    port:                 smtp_port,
     user_name:            ENV["SMTP_USERNAME"]&.strip,
     password:             ENV["SMTP_PASSWORD"]&.strip,
     authentication:       :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: smtp_port == 587,
+    tls:                  smtp_port == 465,
+    open_timeout:         15,
+    read_timeout:         15
   }
 end
 
