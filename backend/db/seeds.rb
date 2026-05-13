@@ -147,7 +147,17 @@ end
     featured: true,
     published: true
   },
-].each { |attrs| Resource.find_or_create_by(title: attrs[:title]).update(attrs) }
+  {
+    title: "School Board Speech Templates",
+    description: "Ready-to-use speech templates for parents who want to speak at school board meetings in support of phone-free school policies. Courtesy of Screen Free Childhood US.",
+    resource_type: "guide",
+    topic: "legislation",
+    source: "Screen Free Childhood US",
+    url: "https://docs.google.com/document/d/1Pdq896LEqNW27XaN2taJwJO8PzYcjYwPbnF16WFaV3w/edit",
+    featured: true,
+    published: true
+  },
+].each { |attrs| Resource.find_or_create_by(title: attrs[:title]).update!(attrs) }
 
 # Sample speakers
 [
