@@ -2,7 +2,7 @@ class ContactMailer < ApplicationMailer
   def new_submission(submission)
     @submission = submission
     mail(
-      to: "christinastewart@hey.com",
+      to: ENV.fetch("CONTACT_RECIPIENT", "christinastewart@hey.com"),
       subject: "New MAMA California Contact: #{submission.name}"
     )
   end
