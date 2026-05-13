@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../api'
 import './admin.css'
 
@@ -60,6 +60,10 @@ export default function AdminLogin() {
             {loading ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
+
+        <p style={{ marginTop: 20, fontSize: 14, textAlign: 'center', color: '#666' }}>
+          Need an account? <Link to="/admin/signup" style={{ color: '#1a1a2e', fontWeight: 600 }}>Sign up</Link>
+        </p>
       </div>
     </div>
   )

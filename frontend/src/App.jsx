@@ -8,6 +8,7 @@ import Resources from './pages/Resources'
 import Events from './pages/Events'
 import News from './pages/News'
 import AdminLogin from './admin/AdminLogin'
+import AdminSignup from './admin/AdminSignup'
 import AdminApp from './admin/AdminApp'
 import './index.css'
 import './App.css'
@@ -17,8 +18,9 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Admin — no public nav/footer */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/*" element={<AdminApp />} />
+        <Route path="/admin/login"  element={<AdminLogin />} />
+        <Route path="/admin/signup" element={<AdminSignup />} />
+        <Route path="/admin/*"      element={<AdminApp />} />
 
         {/* Public site */}
         <Route path="*" element={

@@ -23,7 +23,40 @@ module API
         end
       end
 
+      def admin_signup
+        email = params[:email]&.downcase&.strip
+        unless allowlisted_admin?(email)
+          render json: { error: "This email is not authorized to create an admin account." }, status: :forbidden
+          return
+        end
+
+        if Member.exists?(email: email)
+          render json: { error: "An account with this email already exists. Please log in instead." }, status: :unprocessable_entity
+          return
+        end
+
+        member = Member.new(
+          email: email,
+          first_name: params[:first_name],
+          last_name:  params[:last_name],
+          password:   params[:password],
+          is_admin:   true
+        )
+
+        if member.save
+          render json: { token: jwt_token(member), member: member_json(member) }, status: :created
+        else
+          render json: { errors: member.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       private
+
+      def allowlisted_admin?(email)
+        return false if email.blank?
+        allowlist = ENV.fetch("ADMIN_EMAILS", "").split(",").map { |e| e.strip.downcase }
+        allowlist.include?(email)
+      end
 
       def member_json(member)
         {
