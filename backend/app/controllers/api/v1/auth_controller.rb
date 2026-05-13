@@ -52,9 +52,16 @@ module API
 
       private
 
+      DEFAULT_ADMIN_EMAILS = %w[
+        jrees41@gmail.com
+        christinastewart@hey.com
+        cherylwestmont@gmail.com
+      ].freeze
+
       def allowlisted_admin?(email)
         return false if email.blank?
-        allowlist = ENV.fetch("ADMIN_EMAILS", "").split(",").map { |e| e.strip.downcase }
+        env_emails = ENV.fetch("ADMIN_EMAILS", "").split(",").map { |e| e.strip.downcase }
+        allowlist = (DEFAULT_ADMIN_EMAILS + env_emails).map(&:downcase).uniq
         allowlist.include?(email)
       end
 
