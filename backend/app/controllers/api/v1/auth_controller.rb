@@ -30,8 +30,14 @@ module API
         member = Member.find_by(email: email) if email.present?
 
         if member&.is_admin?
-          token = member.generate_reset_token!
-          PasswordResetMailer.reset_email(member, token).deliver_now
+          begin
+            token = member.generate_reset_token!
+            PasswordResetMailer.reset_email(member, token).deliver_now
+          rescue => e
+            Rails.logger.error("[PasswordReset] #{e.class}: #{e.message}\n#{e.backtrace.first(10).join("\n")}")
+            render json: { error: "Could not send reset email: #{e.message}" }, status: :internal_server_error
+            return
+          end
         end
 
         render json: { message: "If an admin account exists for that email, a reset link is on its way." }
