@@ -1,28 +1,34 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login } from '../api'
+import { adminResetPassword } from '../api'
 import './admin.css'
 
-export default function AdminLogin() {
+export default function AdminForgotPassword() {
   const [form, setForm] = useState({ email: '', password: '' })
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+
+  const change = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError(null)
     setLoading(true)
     try {
-      const res = await login(form)
-      if (!res.data.member?.is_admin) {
-        setError('This account does not have admin access.')
-        return
-      }
+      const res = await adminResetPassword(form)
       localStorage.setItem('mama_token', res.data.token)
       navigate('/admin/events')
-    } catch {
-      setError('Invalid email or password.')
+    } catch (err) {
+      const status = err.response?.status
+      if (status === 403) {
+        setError("This email isn't authorized for admin access.")
+      } else if (status === 404) {
+        setError("No account found with that email. Try /admin/signup instead.")
+      } else {
+        const msgs = err.response?.data?.errors?.join(', ') || err.response?.data?.error || 'Reset failed.'
+        setError(msgs)
+      }
     } finally {
       setLoading(false)
     }
@@ -31,40 +37,27 @@ export default function AdminLogin() {
   return (
     <div className="admin-login">
       <div className="admin-login__box">
-        <h1>MAMA Admin</h1>
-        <p>Sign in to manage events and resources.</p>
+        <h1>Reset Password</h1>
+        <p>Enter your admin email and a new password.</p>
 
         {error && <div className="admin-alert admin-alert--error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="admin-field" style={{ marginBottom: 14 }}>
             <label>Email</label>
-            <input
-              type="email"
-              value={form.email}
-              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-              required
-              autoFocus
-            />
+            <input name="email" type="email" value={form.email} onChange={change} required autoFocus />
           </div>
           <div className="admin-field" style={{ marginBottom: 24 }}>
-            <label>Password</label>
-            <input
-              type="password"
-              value={form.password}
-              onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
-              required
-            />
+            <label>New Password</label>
+            <input name="password" type="password" value={form.password} onChange={change} required minLength={8} />
           </div>
           <button type="submit" className="btn-admin btn-admin--primary" disabled={loading} style={{ width: '100%' }}>
-            {loading ? 'Signing in…' : 'Sign In'}
+            {loading ? 'Resetting…' : 'Set New Password'}
           </button>
         </form>
 
         <p style={{ marginTop: 20, fontSize: 14, textAlign: 'center', color: '#666' }}>
-          Need an account? <Link to="/admin/signup" style={{ color: '#1a1a2e', fontWeight: 600 }}>Sign up</Link>
-          {' · '}
-          <Link to="/admin/forgot-password" style={{ color: '#1a1a2e', fontWeight: 600 }}>Forgot password?</Link>
+          <Link to="/admin/login" style={{ color: '#1a1a2e', fontWeight: 600 }}>Back to sign in</Link>
         </p>
       </div>
     </div>

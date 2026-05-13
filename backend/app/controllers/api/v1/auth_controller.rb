@@ -23,6 +23,26 @@ module API
         end
       end
 
+      def admin_reset_password
+        email = params[:email]&.downcase&.strip
+        unless allowlisted_admin?(email)
+          render json: { error: "This email is not authorized." }, status: :forbidden
+          return
+        end
+
+        member = Member.find_by(email: email)
+        unless member
+          render json: { error: "No account found with that email. Please sign up first." }, status: :not_found
+          return
+        end
+
+        if member.update(password: params[:password])
+          render json: { token: jwt_token(member), member: member_json(member) }
+        else
+          render json: { errors: member.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       def admin_signup
         email = params[:email]&.downcase&.strip
         unless allowlisted_admin?(email)
