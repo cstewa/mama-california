@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #333;">
+  <h2 style="color: #1a1a2e;">Reset your password</h2>
+  <p>Hi <%= @member.first_name %>,</p>
+  <p>We received a request to reset the password for your MAMA California admin account. Click the button below to set a new password — this link will expire in 1 hour.</p>
+  <p style="margin: 28px 0;">
+    <a href="<%= @reset_url %>" style="background: #c0392b; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: 600;">
+      Reset Password
+    </a>
+  </p>
+  <p style="color: #666; font-size: 13px;">Or paste this URL into your browser:<br><%= @reset_url %></p>
+  <p style="color: #666; font-size: 13px; margin-top: 32px;">If you didn't request this, you can ignore this email — your password won't change.</p>
+</body>
+</html>

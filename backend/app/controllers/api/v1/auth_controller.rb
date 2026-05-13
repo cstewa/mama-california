@@ -23,20 +23,32 @@ module API
         end
       end
 
-      def admin_reset_password
+      # Step 1: user submits email; we email them a reset link if account exists.
+      # We always return success to avoid leaking which emails have accounts.
+      def request_password_reset
         email = params[:email]&.downcase&.strip
-        unless allowlisted_admin?(email)
-          render json: { error: "This email is not authorized." }, status: :forbidden
-          return
+        member = Member.find_by(email: email) if email.present?
+
+        if member&.is_admin?
+          token = member.generate_reset_token!
+          PasswordResetMailer.reset_email(member, token).deliver_now
         end
 
-        member = Member.find_by(email: email)
-        unless member
-          render json: { error: "No account found with that email. Please sign up first." }, status: :not_found
+        render json: { message: "If an admin account exists for that email, a reset link is on its way." }
+      end
+
+      # Step 2: user submits token + new password.
+      def admin_reset_password
+        token = params[:token].to_s
+        member = Member.where.not(reset_password_token: nil).find_by(reset_password_token: token)
+
+        unless member && member.reset_token_valid?(token)
+          render json: { error: "This reset link is invalid or has expired. Please request a new one." }, status: :unauthorized
           return
         end
 
         if member.update(password: params[:password])
+          member.clear_reset_token!
           render json: { token: jwt_token(member), member: member_json(member) }
         else
           render json: { errors: member.errors.full_messages }, status: :unprocessable_entity

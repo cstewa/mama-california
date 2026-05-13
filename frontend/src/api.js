@@ -19,8 +19,9 @@ export const getSpeakers  = ()       => api.get('/speakers')
 export const submitContact = (data)  => api.post('/contact', data)
 export const signup        = (data)  => api.post('/members/signup', data)
 export const login         = (data)  => api.post('/auth/login', data)
-export const adminSignup        = (data) => api.post('/auth/admin_signup', data)
-export const adminResetPassword = (data) => api.post('/auth/admin_reset_password', data)
+export const adminSignup           = (data) => api.post('/auth/admin_signup', data)
+export const requestPasswordReset  = (data) => api.post('/auth/request_password_reset', data)
+export const adminResetPassword    = (data) => api.post('/auth/admin_reset_password', data)
 
 // Admin
 export const adminGetEvents      = ()         => api.get('/admin/events')

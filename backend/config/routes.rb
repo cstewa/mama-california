@@ -5,8 +5,9 @@ Rails.application.routes.draw do
       post   "auth/login",         to: "auth#login"
       delete "auth/logout",        to: "auth#logout"
       get    "auth/me",            to: "auth#me"
-      post   "auth/admin_signup",         to: "auth#admin_signup"
-      post   "auth/admin_reset_password", to: "auth#admin_reset_password"
+      post   "auth/admin_signup",           to: "auth#admin_signup"
+      post   "auth/request_password_reset", to: "auth#request_password_reset"
+      post   "auth/admin_reset_password",   to: "auth#admin_reset_password"
 
       # Public resources
       resources :events,    only: [:index, :show]
