@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post   "auth/admin_signup",           to: "auth#admin_signup"
       post   "auth/request_password_reset", to: "auth#request_password_reset"
       post   "auth/admin_reset_password",   to: "auth#admin_reset_password"
+      get    "auth/smtp_diagnose",          to: "auth#smtp_diagnose"
 
       # Public resources
       resources :events,    only: [:index, :show]

@@ -32,15 +32,40 @@ module API
         if member&.is_admin?
           begin
             token = member.generate_reset_token!
+            smtp = ActionMailer::Base.smtp_settings
+            Rails.logger.info("[PasswordReset] SMTP host=#{smtp[:address].inspect} port=#{smtp[:port]} user=#{smtp[:user_name].inspect} starttls=#{smtp[:enable_starttls_auto]} tls=#{smtp[:tls]}")
             PasswordResetMailer.reset_email(member, token).deliver_now
+            Rails.logger.info("[PasswordReset] sent to #{member.email}")
           rescue => e
-            Rails.logger.error("[PasswordReset] #{e.class}: #{e.message}\n#{e.backtrace.first(10).join("\n")}")
-            render json: { error: "Could not send reset email: #{e.message}" }, status: :internal_server_error
+            Rails.logger.error("[PasswordReset] #{e.class}: #{e.message}")
+            Rails.logger.error(e.backtrace.first(20).join("\n"))
+            render json: { error: "#{e.class}: #{e.message}" }, status: :internal_server_error
             return
           end
         end
 
         render json: { message: "If an admin account exists for that email, a reset link is on its way." }
+      end
+
+      # Temporary diagnostic — probes TCP connectivity to the SMTP host
+      def smtp_diagnose
+        require "socket"
+        host = ENV["SMTP_HOST"]&.strip
+        port = ENV.fetch("SMTP_PORT", 587).to_s.strip.to_i
+        result = { host: host, port: port }
+        begin
+          Timeout.timeout(10) do
+            sock = TCPSocket.new(host, port)
+            banner = sock.recv(256)
+            sock.close
+            result[:tcp_ok] = true
+            result[:banner] = banner.to_s.strip
+          end
+        rescue => e
+          result[:tcp_ok] = false
+          result[:error] = "#{e.class}: #{e.message}"
+        end
+        render json: result
       end
 
       # Step 2: user submits token + new password.
