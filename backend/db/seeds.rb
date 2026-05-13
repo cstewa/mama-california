@@ -105,39 +105,6 @@ end
 # Sample resources
 [
   {
-    title: "Demystifying Social Media Addiction Litigation",
-    description: "A comprehensive overview of the legal landscape around social media addiction claims and what it means for families.",
-    resource_type: "article",
-    url: "https://www.aei.org/technology-and-innovation/demystifying-social-media-addiction-litigation/",
-    source: "AEI",
-    topic: "litigation",
-    featured: true,
-    published: true
-  },
-  {
-    title: "Why Wait Until 13 to Give Your Child a Phone",
-    description: "Evidence-based guidance for parents on the right age to introduce smartphones and the risks of doing so too early.",
-    resource_type: "guide",
-    topic: "parenting",
-    featured: true,
-    published: true
-  },
-  {
-    title: "Parent-Child Phone Contract Template",
-    description: "A customizable contract you can use with your child when introducing a smartphone, setting clear expectations around use.",
-    resource_type: "guide",
-    topic: "parenting",
-    published: true
-  },
-  {
-    title: "AI Emotional Reliance in Gen Z",
-    description: "Research on conversational AI models fostering emotional dependence, with 1 in 3 Gen Z users reporting intimate relationships with AI.",
-    resource_type: "study",
-    url: "https://arxiv.org/abs/2512.15117",
-    topic: "ai_safety",
-    published: true
-  },
-  {
     title: "The Anxious Generation — Jonathan Haidt",
     description: "The definitive book on how smartphones and social media have rewired childhood and triggered a mental health crisis.",
     resource_type: "book",
