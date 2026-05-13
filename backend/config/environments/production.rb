@@ -24,10 +24,10 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              ENV["SMTP_HOST"],
-    port:                 ENV.fetch("SMTP_PORT", 587).to_i,
-    user_name:            ENV["SMTP_USERNAME"],
-    password:             ENV["SMTP_PASSWORD"],
+    address:              ENV["SMTP_HOST"]&.strip,
+    port:                 ENV.fetch("SMTP_PORT", 587).to_s.strip.to_i,
+    user_name:            ENV["SMTP_USERNAME"]&.strip,
+    password:             ENV["SMTP_PASSWORD"]&.strip,
     authentication:       :plain,
     enable_starttls_auto: true
   }
